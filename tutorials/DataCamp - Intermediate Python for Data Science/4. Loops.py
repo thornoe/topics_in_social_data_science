@@ -48,7 +48,7 @@ for key, value in house.items() :
 ################################################
 ################ DataFrame-loop ################
 ################################################
-cars = pd.read_csv('cars.csv', index_col = 0)
+cars = pd.read_csv('tutorials/DataCamp - Intermediate Python for Data Science/cars.csv', index_col = 0)
 # Ex. 3.a
 for lab, row in cars.iterrows() :
     print(lab)
@@ -56,6 +56,15 @@ for lab, row in cars.iterrows() :
 # Ex. 3.b
 for lab, row in cars.iterrows() :
     print(lab + ": " + str(row['cars_per_cap']))
+
+################################################
+################## numpy-loop ##################
+################################################
+# For non-strings only
+cpc = np.array(cars['cars_per_cap'])
+
+for x in np.nditer(cpc) :
+    print(x)
 
 ################################################
 ################     Apply:     ################

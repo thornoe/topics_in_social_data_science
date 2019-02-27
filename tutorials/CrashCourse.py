@@ -2,12 +2,12 @@
 import sys
 sys.executable
 
-import os # imports everything from os (folder)
-    os.path.exists('randoms.py')
+import numpy as np # Name the numpy-matrix setup "np"
 
+import os # imports everything from os (folder)
 from os import path # only import the function "path" from os
 
-import numpy as np # Name the numpy-matrix setup "np"
+os.path.exists('randoms.py')
 
 #Setting working directory:
 pwd()

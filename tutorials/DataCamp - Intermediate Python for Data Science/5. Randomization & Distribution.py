@@ -26,8 +26,6 @@ for i in range(500) :
         random_walk.append(step)
     all_walks.append(random_walk)
 
-
-
 # Create and plot np_aw_t
 np_aw_t = np.transpose(np.array(all_walks))
 
@@ -41,3 +39,5 @@ plt.clf()
 
 # The fraction of simulations that ended higher than step 60
 np.mean(ends > 60)
+
+https://campus.datacamp.com/courses/intermediate-python-for-data-science/case-study-hacker-statistics?ex=2
