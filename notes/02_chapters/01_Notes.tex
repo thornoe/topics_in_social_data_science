@@ -30,8 +30,9 @@ Solution: 'Slide' weight matrix over a part of the input. E.g.
 \end{itemize}
 \textbf{Padding}
 \begin{itemize}
-  \item If you don't want the image to shrink.
   \item The no. zeroes added at the borders of the input image before applying the filter.
+  \item Full padding: If you don't want the image to shrink.
+  \item Half padding: The image shrinks less, e.g. padding = 1.
 \end{itemize}
 Width of the activation map will be
 \begin{align*}
