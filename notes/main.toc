@@ -1,4 +1,0 @@
-\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\babel@toc {american}{}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Recurrent Neural Networks}{3}{section.1}

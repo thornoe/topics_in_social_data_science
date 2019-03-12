@@ -1,0 +1,200 @@
+  \RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{chngcntr}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+%\renewcommand{\thetable}{\thesection.\arabic{table}}
+\counterwithin{equation}{section}
+%\renewcommand{\thesubsection}{\thesection.\alph{subsection}} % redefining the subsection for letters instead of numbers
+\usepackage[table]{xcolor}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{wrapfig}
+\usepackage{gauss}
+\usepackage{xfrac}
+\usepackage[page]{totalcount}
+\usepackage{caption}
+	\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{setspace}
+%\usepackage{selinput}
+%\usepackage{pdfpages}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+\usepackage[labelfont=bf]{caption}	% Headers for Figures
+	\captionsetup{labelfont=bf,textfont=normal}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{epigraph}
+\usepackage{enumerate}
+
+\setlength{\headheight}{15pt}
+
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%\setcounter{tocdepth}{3}
+%\setcounter{secnumdepth}{3}
+%\setcounter{secnumdepth}{0}
+
+\tikzset{
+%Define standard arrow tip
+>=stealth',
+%Define style for different line styles
+help lines/.style={dashed, thick},
+axis/.style={<->},
+important line/.style={thick},
+connection/.style={thic k, dotted},
+}
+% patch gauss macros for doing their work in `align'
+% and other amsmath environments; see
+% http://tex.stackexchange.com/questions/146532/
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\g@matrix
+ {\vbox\bgroup}
+ {\vbox\bgroup\normalbaselines}% restore the standard baselineskip
+ {}{}
+\makeatother
+\newcommand{\BAR}{%
+  \hspace{-\arraycolsep}%
+  \strut\vrule % the `\vrule` is as high and deep as a strut
+  \hspace{-\arraycolsep}%
+}
+\pagestyle{fancy}
+
+%subsections get indexed with letters
+%\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+%marginer
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+
+%Bibliography
+\usepackage[autostyle]{csquotes}
+
+\usepackage[style=authoryear, backend=bibtex8, natbib=true, maxcitenames=2]{biblatex}
+%\addbibresource{bibliography.bib}
+
+% Header with date
+%\lhead{}
+\chead{}
+\rhead{\today}
+
+\cfoot{Page \thepage\ of \totalpages}
+
+%begynd dokumentet
+\begin{document}
+\begin{spacing}{1.213}
+
+
+\title{Convolutional- \& Recurrent Neural Networks \\
+\large Notes for Topics in Social Data Science at UCPH \\
+\normalsize \today
+%\normalsize {No. of signs: }
+}
+\author{\normalsize  Thor Donsby Noe }
+\date{} % Use current date.
+\maketitle % Print title page.
+\pagenumbering{roman} % Roman page number for toc
+\setcounter{page}{1} % Make it start with "ii"
+
+%\chapter{A Main Heading} % Make a "chapter" heading
+\pagenumbering{arabic} % Start text with arabic 1
+
+%---------------------------------------------------------------
+%-------SKRIV HERUNDER------------------------------------------
+%---------------------------------------------------------------
+
+% \epigraph{"..."}
+% {\textit{.}}
+
+\section{Convolutional Nets}
+\begin{multicols}{2}\noindent
+Issues with vanilla feed-forward neural network
+\begin{itemize}
+  \item Data squeezed into a 1xN vector.
+  \item Single operation on whole input.
+  \item No attention to \textbf{spatial adjacency}.
+\end{itemize}
+Solution: 'Slide' weight matrix over a part of the input. E.g.
+\begin{itemize}
+  \item Input image: 32x32x3 (i.e. RGB-colors)
+  \item Filter: 5x5x3 $\rightarrow$ dot product $\rightarrow$ 1 number
+  \item Activation map: 28x28x1 (convolved over all spatial locations)
+  \begin{itemize}
+    \item One activation map for each filter. These are stacked.
+    \item E.g. 28x28x6 for 6 5x5x3 filters.
+    \begin{itemize}
+      \item An additional activation map can be added by using a filter on the activation map of the former layer.
+      \item E.g. a new activation map layer: 24x24x10 by using 10 5x5x3 filters.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\textbf{Stride}
+\begin{itemize}
+  \item How many pixels are moved each time, e.g. 1.
+\end{itemize}
+\textbf{Padding}
+\begin{itemize}
+  \item The no. zeroes added at the borders of the input image before applying the filter.
+  \item Full padding: If you don't want the image to shrink.
+  \item Half padding: The image shrinks less, e.g. padding = 1.
+\end{itemize}
+Width of the activation map will be
+\begin{align*}
+  W=\frac{N+2P-F}{S}+1
+\end{align*}
+E.g. for the example above with padding=2
+\begin{align*}
+ W=\frac{32+2\cdot2-5}{1}+1=32
+\end{align*}
+\textbf{Pooling:} Condense the information by downsampling.
+\begin{itemize}
+  \item Speeds up the learning process.
+  \item 'max pool' where only largest value is saved for each quadrant as they are expected to contain the more important signal.
+  \item 'average pooling'
+  \item E.g. 16x16 $\rightarrow$ 4x4
+  \item Doesn't shrink it in the depth direction.
+\end{itemize}
+
+\end{multicols}
+
+\section{Recurrent Nets}
+\begin{multicols}{2}\noindent
+Optimal for \textbf{sequential data} but useful for non-sequential data as well.
+\\ \\
+Issue for \textbf{all} feed forward neural networks
+\begin{itemize}
+  \item Input and output must be of hard-assigned dimensions.
+\end{itemize}
+Backpropagation: Compute the sum of losses.
+\begin{itemize}
+  \item Can get complicated as the number becomes very high up with long chains.
+  \item Can break it into parts.
+\end{itemize}
+Elements
+\begin{itemize}
+  \item f: Forget vector (0 = forget, 1 = remember) $\rightarrow$ what to forget from c-vector
+  \begin{itemize}
+    \item c: New hidden vector, i.e. long term memory
+    \item c is not converted, $\rightarrow$ not multiplied by weight $\rightarrow$ gradient doesn't explode $\rightarrow$ much quicker
+  \end{itemize}
+  \item i, g: adds to memory vector, c
+  \item o: output vector
+\end{itemize}
+
+\end{multicols}
+
+%\includegraphics[width = 1.0\textwidth]{CO2.PNG}
+
+\end{spacing}
+\end{document}

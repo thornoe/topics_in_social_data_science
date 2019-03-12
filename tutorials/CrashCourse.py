@@ -4,12 +4,11 @@ sys.executable
 
 import numpy as np # Name the numpy-matrix setup "np"
 
-import os # imports everything from os (folder)
 from os import path # only import the function "path" from os
-
-os.path.exists('randoms.py')
+os.path.exists('randoms.py')    # test if exists in path
 
 #Setting working directory:
+import os # imports everything from os (folder)
 pwd()
 os.chdir('C:/Users/thorn/Onedrive/Dokumenter/GitHub/tsds_2019') #Change backslashes to forwardslashes
 
