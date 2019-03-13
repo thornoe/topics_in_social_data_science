@@ -8,8 +8,8 @@ from os import path # only import the function "path" from os
 os.path.exists('randoms.py')    # test if exists in path
 
 #Setting working directory:
-import os # imports everything from os (folder)
-pwd()
+import os   # imports everything from os (folder)
+pwd()       # print working directory
 os.chdir('C:/Users/thorn/Onedrive/Dokumenter/GitHub/tsds_2019') #Change backslashes to forwardslashes
 
 print("See \n this")
