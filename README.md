@@ -1,4 +1,4 @@
-# Topics in Social Data Science 2019
+## Topics in Social Data Science 2019
 Master's course on University of Copenhagen, Department of Economics.
 -  See [abjer/tsds](https://github.com/abjer/tsds) for the public course material.
 
