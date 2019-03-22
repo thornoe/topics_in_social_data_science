@@ -1,4 +1,6 @@
 # press alt+i to toggle function options
+
+# See https://networkx.github.io/documentation/stable/tutorial
 import networkx as nx
 
 G = nx.Graph()  # create an empty graph with no nodes nor edges
