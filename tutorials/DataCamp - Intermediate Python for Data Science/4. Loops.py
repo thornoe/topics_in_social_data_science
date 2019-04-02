@@ -7,11 +7,14 @@ import numpy as np
 offset = 8
 while offset != 0 :
     print("correcting...")
-    if offset > 0 :
+    if offset > 4 :
+        offset = offset - 2
+    elif offset > 2:
         offset = offset - 1
     else :
         offset = offset + 1
     print(offset)
+# OBS: hydrogen:interrupt-kernel
 
 ################################################
 ################### for-loop ###################
@@ -21,7 +24,7 @@ for area in areas :
     print(area)
 
 # Changing same for-loop to use enumerate()
-for index, area in enumerate(areas) :
+for index, area in enumerate(areas):
     print("room " + str(1+index) + ": " + str(area) + " sqm")
 
 # Ex. 2.a. List of lists
