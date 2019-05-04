@@ -1,3 +1,6 @@
+# Intermediate Python for Data Science - a highly recommendable paid course #
+https://www.datacamp.com/courses/intermediate-python-for-data-science
+
 import pandas as pd
 import numpy as np
 
@@ -19,6 +22,11 @@ while offset != 0 :
 ################################################
 ################### for-loop ###################
 ################################################
+# Range
+for i in range(2, 5):
+    print(i, i ** 2)
+
+# List
 areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 for area in areas :
     print(area)
