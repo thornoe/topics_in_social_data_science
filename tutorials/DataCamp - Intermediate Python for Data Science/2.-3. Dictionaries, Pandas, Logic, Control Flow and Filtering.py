@@ -14,10 +14,20 @@ data = pd.read_csv("path/to/data.csv", index_col=0) # leave out "index" if not i
 
 # Definition of dictionary
 europe = {'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'oslo' }
-europe.keys() # Keys in europe
+k = list(europe.keys()) # List of keys in europe
 europe['norway'] # The value that belongs to key 'norway'
 europe['denmark'] = 'copenhagen' # add or edit data point directly
-del(europe['france'])
+del(europe['france']) # delete France from the dictionary
+europe
+
+# Subset dictionaries
+def subset(d, keys):
+    return dict((k, d[k]) for k in keys if k in d)
+scandinavia = subset(europe, ['norway', 'denmark'])
+scandinavia
+# In one line
+dict((k, europe[k]) for k in ['norway', 'denmark'] if k in europe)
+
 
 ### Pandas ###
 # Ex.1: Creating a DataFrame

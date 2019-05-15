@@ -39,8 +39,8 @@ G.number_of_nodes()
 G.number_of_edges()
 list(G.nodes)
 list(G.edges)
-list(G.adj['p'])    # or list(G.neighbors(1))
-G.degree['p']         # the number of edges incident to 1
+list(G.adj['p'])    # or list(G.neighbors(p'))
+G.degree['p']       # the number of edges i'ncident to p
 
 # Reporting edges and degree from a subset of all nodes using an 'nbunch'
 G.edges(['s', 'p'])
