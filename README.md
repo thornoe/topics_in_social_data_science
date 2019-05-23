@@ -1,6 +1,6 @@
 # Topics in Social Data Science 2019
 Master's course on University of Copenhagen, Department of Economics.
--  See our [project](https://github.com/Morten-Esketveit/TSDS-gruppe-2019) on analysing and mapping the network of domestic flights in the US for 2007 and 2018 using Python.
+-  See our [project](https://github.com/Morten-Esketveit/TSDS-gruppe-2019) on analysing and mapping the network of domestic flights in the US for 1998, 2007, and 2018 using Python.
 -  See [abjer/tsds](https://github.com/abjer/tsds) for the public course material.
 
 ## Getting started with Atom
