@@ -17,10 +17,12 @@ G.add_nodes_from(H)     # adding the nodes in H as nodes of G
 G.add_node(H)           # adding the container H as a node in G
 
 ### EDGES
-G.add_edge(1, 2)
 e = (2, 3)
 G.add_edge(*e)  # unpack edge tuple
 G.add_edges_from([(1, 2), (1, 3)])  # list of edges
+H = G.copy()
+H.add_edge(2, 3)
+list(G.edges), list(H.edges)
 
 G.add_edges_from(H.edges)   # from container
 
