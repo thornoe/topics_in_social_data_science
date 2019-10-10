@@ -1,3 +1,5 @@
+# press alt+i to toggle function options
+
 # Imports
 import sys
 sys.executable
