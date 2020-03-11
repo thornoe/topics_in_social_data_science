@@ -1,5 +1,7 @@
-# Intermediate Python for Data Science - a highly recommendable paid course #
+"""
+Intermediate Python for Data Science - a highly recommendable paid course:
 https://www.datacamp.com/courses/intermediate-python-for-data-science
+"""
 
 ## Dictionaries, Pandas, Logic, Control Flow and Filtering ##
 import pandas as pd
